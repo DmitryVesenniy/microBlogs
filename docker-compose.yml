@@ -27,6 +27,19 @@ services:
           - 8000
         ports:
             - 8000:8000
+        depends_on:
+            - migration
+            - db
 # запускаем gunicorn
         command: "gunicorn -c gunicorn.py main.wsgi"
+
+    migration:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        command:  python manage.py makemigrations --noinput && python manage.py migrate --noinput
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - db
 

@@ -1,0 +1,21 @@
+.navbar-castom{
+    background-color: #005247;
+}
+#navbarSupportedContent{
+    margin-left: 10px;
+}
+section{
+    margin-top: 10px;
+    padding: 5px;
+}
+.form-control{
+    margin: 5px;
+}
+label{
+    display:flex;
+    align-items: center !important;
+    justify-content: flex-end;
+}
+.card{
+    color:#DC2D2D;
+}

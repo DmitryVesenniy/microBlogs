@@ -1,0 +1,32 @@
+version: '3'
+
+# хранилища
+volumes:
+    pgdata:
+        driver: local
+
+services:
+    db:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+          MYSQL_DATABASE: djangodocker_db
+          MYSQL_ROOT_PASSWORD: root
+
+    django:
+        restart: always
+# указываем откуда собирать образ
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+# монтируем директорию проекта
+        volumes:
+            - ./:/var/www
+        expose:
+          - 8000
+        ports:
+            - 8000:8000
+# запускаем gunicorn
+        command: "gunicorn -c gunicorn.py main.wsgi"
+

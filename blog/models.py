@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class AutorBlogModel(models.Model):
@@ -11,3 +12,6 @@ class NoteModel(models.Model):
     date = models.DateField(auto_now_add=True)
     user = models.ForeignKey(AutorBlogModel, verbose_name="Автор записи", on_delete=models.CASCADE, \
                              null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('blog', args=[self.id])

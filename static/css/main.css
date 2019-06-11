@@ -19,3 +19,16 @@ label{
 .card{
     color:#DC2D2D;
 }
+.card-text{
+    height: 40px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.card-header{
+    height: 50px;
+}
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}
